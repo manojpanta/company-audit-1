@@ -53,5 +53,19 @@ class Company
   end
 
 
+  def find_employee_by_id(employee_id)
+    employees.find do |employee|
+      employee.id == employee_id
+    end
+  end
+
+  def find_project_by_id(project_id)
+    projects.find do |project|
+      # require 'pry'; binding.pry
+      project.id == project_id
+
+    end
+  end
+
 
 end

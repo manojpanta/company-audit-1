@@ -19,5 +19,35 @@ class CompanyTest < Minitest::Test
   end
 
 
+  def test_it_can_load_datas
+    company = Company.new({:employees => './data/employees.csv',
+      :projects => './data/projects.csv',
+      :timesheets => './data/timesheets.csv'})
+
+      assert_equal 'Susan Smith', company.employees.first.name
+      assert_equal 1, company.employees.first.id
+
+      assert_equal 'Widgets', company.projects.first.name
+      assert_equal 1, company.projects.first.id
+
+      assert_equal 1, company.timesheets.first.employee_id
+      assert_equal 1, company.timesheets.first.project_id
+  end
+
+  def test_it_can_find_employees_by_id
+    company = Company.new({:employees => './data/employees.csv',
+                           :projects => './data/projects.csv',
+                           :timesheets => './data/timesheets.csv'})
+    assert_equal "Susan Smith", company.find_employee_by_id(1).name
+  end
+
+  def test_it_can_find_projects_by_project_id
+    company = Company.new({:employees => './data/employees.csv',
+                            :projects => './data/projects.csv',
+                            :timesheets => './data/timesheets.csv'})
+      assert_equal "Widgets", company.find_project_by_id(1).name
+  end
+
+
 
 end
