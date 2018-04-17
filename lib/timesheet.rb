@@ -30,8 +30,6 @@ class TimeSheet
     a = company.projects find do |project|
       project if project.id == project_id
     end
-    true if 
-
-
+    DateHandler.DHDate.new(@date).date_between(a.start_date, a.end_date)
   end
 end
