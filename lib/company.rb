@@ -21,31 +21,43 @@ class Company
   def load_employees(path = path[:employees])
     CSV.foreach(path, headers: false, header_converters: :symbol) do |data|
       if data.length == 5
+        @status = true
+        @error = nil
         @employees << Employee.new(data[0], data[1], data[2], data[3], data[4])
       else
-        return {success: false, error: 'bad_data'}
+        @status = false
+        @error = "bad data"
       end
     end
+    show_status(@status, @error)
   end
 
   def load_projects(path = path[:projects])
     CSV.foreach(path, headers: false, header_converters: :symbol) do |data|
       if data.length == 4
+        @status = true
+        @error = nil
         @projects << Project.new(data[0], data[1], data[2], data[3])
       else
-        return {success: false, error: 'bad_data'}
+        @status = false
+        @error = "bad data"
       end
     end
+    show_status(@status, @error)
   end
 
   def load_timesheets(path = path[:timesheets])
     CSV.foreach(path, headers: false, header_converters: :symbol) do |data|
       if data.length == 4
+        @status = true
+        @error = nil
         @timesheets << TimeSheet.new(data[0], data[1], data[2], data[3])
       else
-        return {success: false, error: 'bad_data'}
+        @status = false
+        @error = "bad data"
       end
     end
+    show_status(@status, @error)
   end
 
   def find_employee_by_id(employee_id)
@@ -58,5 +70,9 @@ class Company
     projects.find do |project|
       project.id == project_id
     end
+  end
+
+  def show_status(status, error)
+    {:success =>  status, :error =>  error}
   end
 end
