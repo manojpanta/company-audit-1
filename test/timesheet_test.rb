@@ -16,7 +16,4 @@ class TimeSheetTest < Minitest::Test
     assert_instance_of Date, timesheet.date
     assert_instance_of Integer, timesheet.minutes
   end
-
-
-
 end
