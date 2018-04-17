@@ -10,4 +10,10 @@ class Audit
     company
   end
 
+  def were_invalid_days_worked
+    company.
+
+
+  end
+
 end

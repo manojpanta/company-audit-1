@@ -23,7 +23,7 @@ class Company
       if data.length == 5
         @status = true
         @error = nil
-        @employees << Employee.new(data[0], data[1], data[2], data[3], data[4])
+        @employees << Employee.new(data[0], data[1], data[2], data[3], data[4], self)
       else
         @status = false
         @error = "bad data"
@@ -37,7 +37,7 @@ class Company
       if data.length == 4
         @status = true
         @error = nil
-        @projects << Project.new(data[0], data[1], data[2], data[3])
+        @projects << Project.new(data[0], data[1], data[2], data[3], self)
       else
         @status = false
         @error = "bad data"
@@ -51,7 +51,7 @@ class Company
       if data.length == 4
         @status = true
         @error = nil
-        @timesheets << TimeSheet.new(data[0], data[1], data[2], data[3])
+        @timesheets << TimeSheet.new(data[0], data[1], data[2], data[3], self)
       else
         @status = false
         @error = "bad data"
@@ -74,5 +74,11 @@ class Company
 
   def show_status(status, error)
     {:success =>  status, :error =>  error}
+  end
+
+  def timesheeet_valid?(1)
+    timeshets.map do |timesheet|
+      timesheeet.valid?
+    end
   end
 end

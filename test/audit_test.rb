@@ -32,4 +32,19 @@ class AuditTest < Minitest::Test
     result = audit.load_company(audit.company)
     assert_instance_of Company, result
   end
+
+
+  def test_it_can_detect_invlaid_days_worked
+    company = Company.new({:employees => './data/employees.csv',
+                            :projects => './data/projects.csv',
+                            :timesheets => './data/bad_timesheets.csv'})
+
+    audit = Audit.new(company)
+
+    result = audit.were_invalid_days_worked
+
+    assert_equal nil, result
+
+
+  end
 end
