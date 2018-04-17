@@ -11,7 +11,6 @@ class Audit
   end
 
   def were_invalid_days_worked
-    company.
 
 
   end

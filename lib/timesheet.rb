@@ -25,4 +25,13 @@ class TimeSheet
       employee.id == eployee_id
     end
   end
+
+  def valid_date
+    a = company.projects find do |project|
+      project if project.id == project_id
+    end
+    true if 
+
+
+  end
 end

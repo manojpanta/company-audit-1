@@ -75,10 +75,4 @@ class Company
   def show_status(status, error)
     {:success =>  status, :error =>  error}
   end
-
-  def timesheeet_valid?(1)
-    timeshets.map do |timesheet|
-      timesheeet.valid?
-    end
-  end
 end

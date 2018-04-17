@@ -71,14 +71,4 @@ class CompanyTest < Minitest::Test
     result = company.find_project_by_id(100)
     assert_nil result
   end
-
-  def test_it_can_find_invalid_timesheets
-    company = Company.new({:employees => './data/employees.csv',
-      :projects => './data/projects.csv',
-      :timesheets => './data/timesheets.csv'})
-
-      result = company.timesheet_valid?(1)
-
-
-  end
 end
