@@ -2,10 +2,7 @@ require_relative 'project'
 require_relative 'employee'
 require_relative 'timesheet'
 require 'csv'
-
-
 class Company
-
   attr_reader :employees,
               :projects,
               :timesheets,
@@ -24,11 +21,10 @@ class Company
   def load_employees(path = path[:employees])
     CSV.foreach(path, headers: false, header_converters: :symbol) do |data|
       if data.length == 5
-        @employees <<  Employee.new(data[0], data[1], data[2], data[3], data[4])
+        @employees << Employee.new(data[0], data[1], data[2], data[3], data[4])
       else
         return {success: false, error: 'bad_data'}
       end
-
     end
   end
 
@@ -52,7 +48,6 @@ class Company
     end
   end
 
-
   def find_employee_by_id(employee_id)
     employees.find do |employee|
       employee.id == employee_id
@@ -61,11 +56,7 @@ class Company
 
   def find_project_by_id(project_id)
     projects.find do |project|
-      # require 'pry'; binding.pry
       project.id == project_id
-
     end
   end
-
-
 end

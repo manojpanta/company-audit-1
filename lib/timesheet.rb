@@ -11,6 +11,4 @@ class TimeSheet
     @date = DateHandler.string_to_date(date)
     @minutes = minutes.to_i
   end
-
-
 end
